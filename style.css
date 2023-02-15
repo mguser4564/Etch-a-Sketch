@@ -1,3 +1,31 @@
+body {
+        font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
+        display: flex;
+        flex-direction: column;
+}
+
+
+.logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 10px;
+}
+
+.etch-a-sketch {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+
+.button-group {
+        padding-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
 #gridContainer {
         display: grid;
         grid-template-columns: repeat(16, 1fr);
@@ -8,8 +36,7 @@
         width: 500px;
 }
 
-.gridItem {
-    background-color: #ddd;
-    border: 1px solid #000;
-  }
-
+.gridItems {
+        background-color: #ddd;
+        border: 1px solid #000;
+}
