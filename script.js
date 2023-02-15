@@ -16,12 +16,9 @@ function createGrid() {
     }
   }
 
-  createGrid();
-
   function toggleGrid(){
   toggleButton.addEventListener('click', () => {
     gridContainer.innerHTML = '';
-    gridItems = [];
     if (gridSize === 16) {
         gridContainer.style.gridTemplateRows = 'repeat(32, 1fr)'
         gridContainer.style.gridTemplateColumns = 'repeat(32, 1fr)'
@@ -36,12 +33,16 @@ function createGrid() {
       gridSize = 16;
     }
     createGrid();
+    changeColor();
   });};
-  
-  toggleGrid()
  
+  function changeColor (){
     gridItems.forEach(element => {
-        element.addEventListener('click', () => {
+        element.addEventListener('mousemove', () => {
             element.style.backgroundColor = 'red';  
         });
-    });
+    });};
+
+    createGrid();
+    toggleGrid();
+    changeColor();
