@@ -1,8 +1,15 @@
 
 const gridContainer = document.getElementById('gridContainer');
-const toggleButton = document.getElementById('toggle-size');
+const slider = document.getElementById('mySlider');
 
-let gridSize = 16;
+const output = document.getElementById("sliderValue");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+let gridSize = slider.value;
 let gridItems = [];
 
 function createGrid() {
@@ -16,22 +23,12 @@ function createGrid() {
     }
   }
 
-  function toggleGrid(){
-  toggleButton.addEventListener('click', () => {
+  function slideGrid(){
+    slider.addEventListener('input', () => {
     gridContainer.innerHTML = '';
-    if (gridSize === 16) {
-        gridContainer.style.gridTemplateRows = 'repeat(32, 1fr)'
-        gridContainer.style.gridTemplateColumns = 'repeat(32, 1fr)'
-      gridSize = 32;
-    } else if (gridSize === 32) {
-        gridContainer.style.gridTemplateRows = 'repeat(64, 1fr)'
-        gridContainer.style.gridTemplateColumns = 'repeat(64, 1fr)'
-      gridSize = 64;
-    } else {
-        gridContainer.style.gridTemplateRows = 'repeat(16, 1fr)'
-        gridContainer.style.gridTemplateColumns = 'repeat(16, 1fr)'
-      gridSize = 16;
-    }
+    gridSize = slider.value;
+    gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`
+    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
     createGrid();
     changeColor();
   });};
@@ -44,5 +41,5 @@ function createGrid() {
     });};
 
     createGrid();
-    toggleGrid();
+    slideGrid();
     changeColor();
