@@ -3,10 +3,9 @@ const gridContainer = document.getElementById('gridContainer');
 const slider = document.getElementById('mySlider');
 
 const output = document.getElementById("sliderValue");
-output.innerHTML = slider.value;
-
+output.innerHTML = `${slider.value} x ${slider.value}`;
 slider.oninput = function() {
-  output.innerHTML = this.value;
+  output.innerHTML = `${this.value} x ${this.value}` 
 }
 
 let gridSize = slider.value;
