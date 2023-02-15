@@ -3,6 +3,7 @@ const gridContainer = document.getElementById('gridContainer');
 const slider = document.getElementById('mySlider');
 const clear = document.getElementById('clearGrid')
 const output = document.getElementById("sliderValue");
+const random = document.getElementById('randomColor');
 
 let gridSize = slider.value;
 let gridItems = [];
@@ -43,6 +44,25 @@ function changeColor() {
   });
 };
 
+function getRandomColor() {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function changeRandomColor() {
+  random.addEventListener('click',() =>{ 
+  gridItems.forEach(element => {
+    element.addEventListener('mousemove', () => {
+      element.style.backgroundColor = getRandomColor();
+    });
+  });
+})
+};
+
 function clearGrid() {
   clear.addEventListener('click', () => {
     gridContainer.innerHTML = '';
@@ -58,4 +78,5 @@ createGrid();
 slideGrid();
 sliderValueDisplay ();
 changeColor();
+changeRandomColor();
 clearGrid();
