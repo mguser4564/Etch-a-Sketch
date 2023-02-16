@@ -1,4 +1,3 @@
-
 const gridContainer = document.getElementById('gridContainer');
 const slider = document.getElementById('mySlider');
 const clear = document.getElementById('clearGrid')
@@ -32,11 +31,12 @@ function slideGrid() {
   });
 };
 
-function sliderValueDisplay (){
+function sliderValueDisplay() {
   output.innerHTML = `${slider.value} x ${slider.value}`;
   slider.oninput = function () {
     output.innerHTML = `${this.value} x ${this.value}`
-  }};
+  }
+};
 
 function changeColor() {
   gridItems.forEach(element => {
@@ -47,13 +47,13 @@ function changeColor() {
 };
 
 function classicColor() {
-  classic.addEventListener('click',() =>{ 
-  gridItems.forEach(element => {
-    element.addEventListener('mousemove', () => {
-      element.style.backgroundColor = 'black';
+  classic.addEventListener('click', () => {
+    gridItems.forEach(element => {
+      element.addEventListener('mousemove', () => {
+        element.style.backgroundColor = 'black';
+      });
     });
-  });
-})
+  })
 };
 
 function getRandomColor() {
@@ -66,23 +66,23 @@ function getRandomColor() {
 }
 
 function changeRandomColor() {
-  random.addEventListener('click',() =>{ 
-  gridItems.forEach(element => {
-    element.addEventListener('mousemove', () => {
-      element.style.backgroundColor = getRandomColor();
+  random.addEventListener('click', () => {
+    gridItems.forEach(element => {
+      element.addEventListener('mousemove', () => {
+        element.style.backgroundColor = getRandomColor();
+      });
     });
-  });
-})
+  })
 };
 
 function eraseColor() {
-  eraser.addEventListener('click',() =>{ 
-  gridItems.forEach(element => {
-    element.addEventListener('mousemove', () => {
-      element.style.backgroundColor = 'white';
+  eraser.addEventListener('click', () => {
+    gridItems.forEach(element => {
+      element.addEventListener('mousemove', () => {
+        element.style.backgroundColor = 'white';
+      });
     });
-  });
-})
+  })
 };
 
 function clearGrid() {
@@ -98,7 +98,7 @@ function clearGrid() {
 
 createGrid();
 slideGrid();
-sliderValueDisplay ();
+sliderValueDisplay();
 changeColor();
 changeRandomColor();
 eraseColor();

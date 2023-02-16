@@ -1,14 +1,26 @@
 body {
+        height: 100vh;
         font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
         display: flex;
         flex-direction: column;
+        background-color: #ddd;
 }
 
 .logo {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-bottom: 10px;
+        font-size: 24px;
+        font-weight: 900;
+        padding-bottom: 25px;
+        padding-top: 25px;
+}
+
+.footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: auto;
 }
 
 .etch-a-sketch {
@@ -22,6 +34,7 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 10px;
 }
 
 #gridContainer {
