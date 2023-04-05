@@ -5,6 +5,7 @@ const output = document.getElementById("sliderValue");
 const random = document.getElementById('randomColor');
 const eraser = document.getElementById('eraseGrid');
 const classic = document.getElementById('classicColor');
+const choosecolor = document.getElementById('choosecolor')
 
 let gridSize = slider.value;
 let gridItems = [];
@@ -37,6 +38,13 @@ function sliderValueDisplay() {
     output.innerHTML = `${this.value} x ${this.value}`
   }
 };
+
+function chooseColor(){
+  choosecolor.addEventListener('change', () => {
+    const selectedColor = colorPicker.value;
+    return selectedColor;
+  });
+}
 
 function changeColor() {
   gridItems.forEach(element => {
@@ -75,6 +83,16 @@ function changeRandomColor() {
   })
 };
 
+function changeColorChoice() {
+  random.addEventListener('click', () => {
+    gridItems.forEach(element => {
+      element.addEventListener('mousemove', () => {
+        element.style.backgroundColor = chooseColor();
+      });
+    });
+  })
+};
+
 function eraseColor() {
   eraser.addEventListener('click', () => {
     gridItems.forEach(element => {
@@ -104,3 +122,5 @@ changeRandomColor();
 eraseColor();
 classicColor();
 clearGrid();
+chooseColor();
+changeColorChoice();
