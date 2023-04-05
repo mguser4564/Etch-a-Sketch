@@ -40,9 +40,13 @@ function sliderValueDisplay() {
 };
 
 function chooseColor(){
-  choosecolor.addEventListener('change', () => {
-    const selectedColor = colorPicker.value;
-    return selectedColor;
+  choosecolor.addEventListener('click', () => {
+    const selectedColor = choosecolor.value;
+    gridItems.forEach(element => {
+      element.addEventListener('mousemove', () => {
+        element.style.backgroundColor = selectedColor;
+      });
+    });
   });
 }
 
@@ -83,15 +87,6 @@ function changeRandomColor() {
   })
 };
 
-function changeColorChoice() {
-  random.addEventListener('click', () => {
-    gridItems.forEach(element => {
-      element.addEventListener('mousemove', () => {
-        element.style.backgroundColor = chooseColor();
-      });
-    });
-  })
-};
 
 function eraseColor() {
   eraser.addEventListener('click', () => {
@@ -123,4 +118,3 @@ eraseColor();
 classicColor();
 clearGrid();
 chooseColor();
-changeColorChoice();
