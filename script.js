@@ -1,14 +1,12 @@
 const gridContainer = document.getElementById('gridContainer');
 const slider = document.getElementById('mySlider');
-const clear = document.getElementById('clearGrid')
 const output = document.getElementById("sliderValue");
-const random = document.getElementById('randomColor');
-const eraser = document.getElementById('eraseGrid');
-const classic = document.getElementById('classicColor');
-const choosecolor = document.getElementById('choosecolor')
+const colorPicker = document.getElementById('colorPicker')
 
 let gridSize = slider.value;
 let gridItems = [];
+
+let selectedColor = '#000000';
 
 function createGrid() {
   for (let i = 0; i < gridSize; i++) {
@@ -28,7 +26,6 @@ function slideGrid() {
     gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`
     gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
     createGrid();
-    changeColor();
   });
 };
 
@@ -40,81 +37,83 @@ function sliderValueDisplay() {
 };
 
 function chooseColor(){
-  choosecolor.addEventListener('click', () => {
-    const selectedColor = choosecolor.value;
-    gridItems.forEach(element => {
-      element.addEventListener('mousemove', () => {
-        element.style.backgroundColor = selectedColor;
-      });
-    });
+  colorPicker.addEventListener('input', () => {
+     selectedColor = colorPicker.value;
+     console.log(selectedColor);
   });
 }
-
-function changeColor() {
-  gridItems.forEach(element => {
-    element.addEventListener('mousemove', () => {
-      element.style.backgroundColor = 'black';
-    });
-  });
-};
-
-function classicColor() {
-  classic.addEventListener('click', () => {
-    gridItems.forEach(element => {
-      element.addEventListener('mousemove', () => {
-        element.style.backgroundColor = 'black';
-      });
-    });
-  })
-};
-
-function getRandomColor() {
-  let letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
-function changeRandomColor() {
-  random.addEventListener('click', () => {
-    gridItems.forEach(element => {
-      element.addEventListener('mousemove', () => {
-        element.style.backgroundColor = getRandomColor();
-      });
-    });
-  })
-};
-
-
-function eraseColor() {
-  eraser.addEventListener('click', () => {
-    gridItems.forEach(element => {
-      element.addEventListener('mousemove', () => {
-        element.style.backgroundColor = 'white';
-      });
-    });
-  })
-};
-
-function clearGrid() {
-  clear.addEventListener('click', () => {
-    gridContainer.innerHTML = '';
-    gridSize = slider.value;
-    gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`
-    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
-    createGrid();
-    changeColor();
-  })
-};
 
 createGrid();
 slideGrid();
 sliderValueDisplay();
-changeColor();
-changeRandomColor();
-eraseColor();
-classicColor();
-clearGrid();
 chooseColor();
+
+//const clear = document.getElementById('clearGrid')
+//const random = document.getElementById('randomColor');
+//const eraser = document.getElementById('eraseGrid');
+//const classic = document.getElementById('classicColor');
+
+//function changeColor() {
+  //gridItems.forEach(element => {
+    //element.addEventListener('mousemove', () => {
+    //  element.style.backgroundColor = 'black';
+   // });
+ // });
+//};
+
+//function classicColor() {
+  //classic.addEventListener('click', () => {
+    //gridItems.forEach(element => {
+      //element.addEventListener('mousemove', () => {
+        //element.style.backgroundColor = 'black';
+     // });
+    //});
+ // })
+//};
+
+//function getRandomColor() {
+ // let letters = '0123456789ABCDEF';
+ // let color = '#';
+ // for (let i = 0; i < 6; i++) {
+ //   color += letters[Math.floor(Math.random() * 16)];
+ // }
+ // return color;
+//}
+
+//function changeRandomColor() {
+ // random.addEventListener('click', () => {
+ //   gridItems.forEach(element => {
+  //    element.addEventListener('mousemove', () => {
+    //    element.style.backgroundColor = getRandomColor();
+   //   });
+  //  });
+  //})
+//};
+
+
+//function eraseColor() {
+ // eraser.addEventListener('click', () => {
+   // gridItems.forEach(element => {
+   //   element.addEventListener('mousemove', () => {
+      //  element.style.backgroundColor = 'white';
+     // });
+   // });
+  //})
+//};
+
+//function clearGrid() {
+ // clear.addEventListener('click', () => {
+    //gridContainer.innerHTML = '';
+   // gridSize = slider.value;
+    //gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`
+   // gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
+    //createGrid();
+//changeColor();
+ // })
+//};
+
+//changeRandomColor();
+//eraseColor();
+//classicColor();
+//clearGrid();
+//changeColor();
