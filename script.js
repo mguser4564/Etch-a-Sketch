@@ -5,8 +5,8 @@ const colorPicker = document.getElementById('colorPicker')
 
 let gridSize = slider.value;
 let gridItems = [];
-
 let selectedColor = '#000000';
+let isMouseDown = false;
 
 function createGrid() {
   for (let i = 0; i < gridSize; i++) {
@@ -26,6 +26,7 @@ function slideGrid() {
     gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`
     gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
     createGrid();
+    drawOnGrid()
   });
 };
 
@@ -43,10 +44,36 @@ function chooseColor(){
   });
 }
 
+function handleMouseDown(event) {
+  isMouseDown = true;
+  changeCellColor(event.target);
+}
+
+function handleMouseOver(event) {
+  if (isMouseDown) {
+    changeCellColor(event.target);
+  }
+}
+
+function changeCellColor(cell) {
+  cell.style.backgroundColor = selectedColor;
+}
+
+function drawOnGrid(){
+  gridItems.forEach(cell => {
+    cell.addEventListener('mousedown', handleMouseDown);
+    cell.addEventListener('mouseover', handleMouseOver);
+  });
+  document.addEventListener('mouseup', () => {
+    isMouseDown = false;
+  });
+};
+
 createGrid();
 slideGrid();
 sliderValueDisplay();
 chooseColor();
+drawOnGrid();
 
 //const clear = document.getElementById('clearGrid')
 //const random = document.getElementById('randomColor');
