@@ -251,3 +251,7 @@ button:active {
         background: #4CAF50;
         cursor: pointer;
 }
+
+.footer{
+        padding-bottom: 5px;
+}
